@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.teammusa.mematerial.R;
+import com.teammusa.mematerial.activities.MainActivity;
 import com.teammusa.mematerial.data.PreferenceManager;
 import com.teammusa.mematerial.models.Metadata;
 
@@ -41,8 +42,10 @@ public class WelcomeActivity extends AppCompatActivity {
         hide();
         askForPermissions();
 
-//        startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
-//        finish();
+        if(preferenceManager.isUserLoggedIn()) {
+            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+            finish();
+        }
 
         loginButton = findViewById(R.id.login_button);
         signUpButton = findViewById(R.id.sign_up_button);
